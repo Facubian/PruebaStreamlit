@@ -26,14 +26,30 @@ def intro():
 def primer_arbol():
   import streamlit as st
   import numpy as np
+  import joblib
+  from scipy.stats import boxcox
+  import pandas as pd
+
+  def modelo(var,ovr):
+    pred = ovr.predict(var)
+    st.text(pred)
+  
+
+  ovr = joblib.load("/content/modelo/modeloEntrenado.pkl")
 
   st.title('Arbol de desicion simple')
-  st.write("""En esta pagina se puede probar un arbol de desicion 
-    entrenado para peredecir los ovolus que se recuperaran de una aspiracion folicular 
-    a partir de distintos datos clinicos del paciente""")
+  st.markdown("""En esta página se puede probar un árbol de decisión 
+    entrenado para predecir los óvulos que se recuperarán de una aspiración folicular 
+    a partir de distintos datos clínicos del paciente""")
 
-  st.write("""Para el modelos utilizamos como variables predictoras la hormona anti-mülleriana(AMH),
-  el recuento de foliculos antrales(RFA), la edad del paciente y las unidades suministradas totales(lh + fsh) y dos posibles diagnosticos""")
+  st.subheader('Variables utilizadas')
+  st.markdown("""Para el modelo utilizamos como variables predictoras la **hormona anti-mülleriana(AMH)**, 
+  **el recuento de folículos antrales (RFA)**, 
+  **la edad del paciente**, 
+  **las unidades de lh suministradas**, 
+  **las unidades suministradas totales (lh + fsh)**, 
+  **los dias de estimulacion** y 
+  **dos posibles diagnósticos**""")
 
   diagnosticos=["Ninguno","Edt","Femenino Anatomico","Femenino Endocrino","Insuficiencia Ovarica","Masculino","Otro"]
 
@@ -41,10 +57,13 @@ def primer_arbol():
 
   amh = col1.number_input('Hormona antimülereana', min_value=0)
   rfa = col1.number_input('Total de recuento de foliculos antrales',min_value=0)
+  fsh = col1.number_input('Unidades de fsh',min_value=0)
+  
   dia_1 = col1.selectbox('Primer diagnostico', diagnosticos)
   
   edad = col2.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
-  unidades = col2.number_input('Unidades',min_value=0)
+  dias = col2.number_input('Cantidad de dias de estimulacion',min_value=0)
+  lh = col2.number_input('Unidades de lh suministradas',min_value=0)
 
   if(dia_1 != "Ninguno"):
     dia_2 = col2.selectbox('Segundo diagnostico', diagnosticos)
@@ -52,10 +71,45 @@ def primer_arbol():
     dia_2 = col2.selectbox('Segundo diagnostico', ["Ninguno"])
     dia_2 = "Ninguno"
   
-  x=5
-  ovs="0 a 2"
+
+  
   if st.button("Calcular"):
-    st.write(f"Con un {x}% de probabilidad, la cantidad de ovulos que se esperan capturar son entre {ovs}")
+    #edadBox, lambda_ = boxcox(edad + 1)
+    #amhBox, lambda_ = boxcox(amh + 1)
+    
+    lh_d = 0
+    
+    if(lh<1):
+      lh_d = 0
+    else:
+      lh_d = 1
+    
+    dias_d = 0
+    if(dias<12):
+      dias_d=0
+    else:
+      dias_d=1
+    
+    dia1=diagnosticos.index(dia_1)+1
+    dia2=diagnosticos.index(dia_2)+1
+
+    unidades= fsh+lh
+    
+    variables={
+      "edadboxcox": edad,
+      "amh_boxcox": amh,
+      "total rfa": rfa,
+      "diagnostico 1": dia1,
+      "diagnostico 2": dia2,
+      "unidades": unidades,
+      "dias_dis": dias_d,
+      "lh_dis": lh_d}
+    
+    variables = pd.DataFrame([variables])
+    modelo(variables,ovr)
+
+  
+
 
   st.button("Reset", type="primary")
 
