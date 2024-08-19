@@ -47,8 +47,8 @@ def primer_arbol():
     st.text(pred)
   
 
-  #with open('modelo/modelo.pkl', 'rb') as file:
-    #ovr = pickle.load(file)
+  with open('modelo/modeloEntrenado.pkl', 'rb') as file:
+    ovr = pickle.load(file)
 
   st.title('Arbol de desicion simple')
   st.markdown("""En esta página se puede probar un árbol de decisión 
