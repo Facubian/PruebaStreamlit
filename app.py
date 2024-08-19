@@ -26,15 +26,7 @@ def intro():
 def primer_arbol():
   import streamlit as st
   import numpy as np
-  import sys
-  import subprocess
-  # Verificar si 'joblib' está instalado, si no, instalarlo
-  try:
-    import joblib
-  except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "joblib"])
-# Luego puedes importar y usar joblib normalmente
-  import joblib
+  import pickle
   from scipy.stats import boxcox
   import pandas as pd
 
@@ -43,7 +35,8 @@ def primer_arbol():
     st.text(pred)
   
 
-  ovr = joblib.load("./modelo/modeloEntrenado.pkl")
+  with open('modelo/modelo.pkl', 'rb') as file:
+    ovr = pickle.load(file)
 
   st.title('Arbol de desicion simple')
   st.markdown("""En esta página se puede probar un árbol de decisión 
