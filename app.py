@@ -26,6 +26,8 @@ def intro():
 def primer_arbol():
   import streamlit as st
   import numpy as np
+  import sys
+  import subprocess
   # Verificar si 'joblib' está instalado, si no, instalarlo
   try:
     import joblib
