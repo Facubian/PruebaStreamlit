@@ -28,7 +28,7 @@ def primer_arbol():
   import numpy as np
   #import joblib  
   import pickle
-  from scipy.stats import boxcox
+  #from scipy.stats import boxcox
   import pandas as pd
 
   def modelo(var,ovr):
