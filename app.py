@@ -40,7 +40,7 @@ def primer_arbol():
   # Mostrar en consola
   print("Archivos y carpetas en el mismo directorio que el script:")
   for elemento in contenido_directorio:
-    print(elemento)  
+    st.text(elemento)
 
   def modelo(var,ovr):
     pred = ovr.predict(var)
