@@ -26,30 +26,16 @@ def intro():
 def primer_arbol():
   import streamlit as st
   import numpy as np
-  import pickle
+  import joblib
+  from scipy.stats import boxcox
   import pandas as pd
-  import sklearn
-
-  import os
-
-  # Obtener el directorio donde se encuentra el script actual
-  directorio_actual = os.path.dirname(os.path.abspath(__file__))
-
-  # Listar todos los archivos y carpetas en el directorio actual
-  contenido_directorio = os.listdir(directorio_actual)
-
-  # Mostrar en consola
-  print("Archivos y carpetas en el mismo directorio que el script:")
-  for elemento in contenido_directorio:
-    st.text(elemento)
 
   def modelo(var,ovr):
     pred = ovr.predict(var)
     st.text(pred)
   
 
-  with open('modelo/modeloEntrenado.pkl', 'rb') as file:
-    ovr = pickle.load(file)
+  ovr = joblib.load("/content/modelo/modeloEntrenado.pkl")
 
   st.title('Arbol de desicion simple')
   st.markdown("""En esta página se puede probar un árbol de decisión 
