@@ -26,8 +26,15 @@ def intro():
 def primer_arbol():
   import streamlit as st
   import numpy as np
-  import joblib
-  from scipy.stats import boxcox
+  # Verificar si 'joblib' está instalado, si no, instalarlo
+    try:
+        import joblib
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "joblib"])
+
+# Luego puedes importar y usar joblib normalmente
+    import joblib
+      from scipy.stats import boxcox
   import pandas as pd
 
   def modelo(var,ovr):
