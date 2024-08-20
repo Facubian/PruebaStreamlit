@@ -31,6 +31,7 @@ def primer_arbol():
   import pandas as pd
 
   def modelo(var,ovr):
+    print(type(var))
     pred = ovr.predict(var)
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
