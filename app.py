@@ -114,7 +114,7 @@ def primer_arbol():
     
     df = pd.DataFrame([variables])
 
-    st.write(lista)
+    st.write(type(lista))
       
     modelo(lista,ovr)
 
