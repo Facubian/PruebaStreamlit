@@ -26,7 +26,7 @@ def intro():
 def primer_arbol():
   import streamlit as st
   import numpy as np
-  #import joblib  
+  import joblib  
   import pickle
   #from scipy.stats import boxcox
   import pandas as pd
@@ -36,7 +36,7 @@ def primer_arbol():
     st.text(pred)
   
 
-  ovr = pickle.load(open('modelo/modeloEntrenado.pkl', 'rb'))
+  ovr = joblib.load('modelo/modeloEntrenado.pkl')
 
   st.title('Arbol de desicion simple')
   st.markdown("""En esta página se puede probar un árbol de decisión 
