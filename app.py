@@ -109,8 +109,10 @@ def primer_arbol():
       "unidades": unidades,
       "dias_dis": dias_d,
       "lh_dis": lh_d}
+
+    lista=[edad,amh,rfa,dia1,dia2,unidades,dias_d,lh_d]
     
-    lista = pd.DataFrame([variables])
+    df = pd.DataFrame([variables])
 
     st.write(lista)
       
