@@ -110,7 +110,7 @@ def primer_arbol():
       "dias_dis": dias_d,
       "lh_dis": lh_d}
     
-    variables = pd.DataFrame(variables)
+    lista = pd.DataFrame([variables])
     
     modelo(variables,ovr)
 
