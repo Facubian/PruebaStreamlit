@@ -112,7 +112,7 @@ def primer_arbol():
     
     lista = pd.DataFrame([variables])
     
-    modelo(variables,ovr)
+    modelo(lista,ovr)
 
   st.button("Reset", type="primary")
 
