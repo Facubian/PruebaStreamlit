@@ -26,17 +26,21 @@ def intro():
 def primer_arbol():
   import streamlit as st
   import numpy as np
-  import joblib  
-  import pickle
-  #from scipy.stats import boxcox
+  import joblib
+  from scipy.stats import boxcox
   import pandas as pd
 
   def modelo(var,ovr):
     pred = ovr.predict(var)
-    st.text(pred)
+    if(pred==1):
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
+    elif(pred==2):
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
+    else:
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
   
 
-  ovr = joblib.load('modelo/modeloEntrenado.pkl')
+  ovr = joblib.load("/content/modelo/modeloEntrenado.pkl")
 
   st.title('Arbol de desicion simple')
   st.markdown("""En esta página se puede probar un árbol de decisión 
@@ -44,6 +48,7 @@ def primer_arbol():
     a partir de distintos datos clínicos del paciente""")
 
   st.subheader('Variables utilizadas')
+
   st.markdown("""Para el modelo utilizamos como variables predictoras la **hormona anti-mülleriana(AMH)**, 
   **el recuento de folículos antrales (RFA)**, 
   **la edad del paciente**, 
@@ -57,7 +62,7 @@ def primer_arbol():
   col1, col2 = st.columns(2)
 
   amh = col1.number_input('Hormona antimülereana', min_value=0)
-  rfa = col1.number_input('Total de recuento de foliculos antrales',min_value=0)
+  rfa = col1.number_input('Recuento de foliculos antrales',min_value=0)
   fsh = col1.number_input('Unidades de fsh',min_value=0)
   
   dia_1 = col1.selectbox('Primer diagnostico', diagnosticos)
@@ -75,8 +80,6 @@ def primer_arbol():
 
   
   if st.button("Calcular"):
-    #edadBox, lambda_ = boxcox(edad + 1)
-    #amhBox, lambda_ = boxcox(amh + 1)
     
     lh_d = 0
     
@@ -108,9 +111,6 @@ def primer_arbol():
     
     variables = pd.DataFrame([variables])
     modelo(variables,ovr)
-
-  
-
 
   st.button("Reset", type="primary")
 
