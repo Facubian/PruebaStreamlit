@@ -110,10 +110,8 @@ def primer_arbol():
       "dias_dis": dias_d,
       "lh_dis": lh_d}
     
-    variables = pd.DataFrame([variables])
-
-    st.write(edad+amh+rfa+dia1+dia2+unidades+dias_d+lh_d)
-      
+    variables = pd.DataFrame(variables)
+    
     modelo(variables,ovr)
 
   st.button("Reset", type="primary")
