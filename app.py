@@ -111,7 +111,9 @@ def primer_arbol():
       "lh_dis": lh_d}
     
     lista = pd.DataFrame([variables])
-    
+
+    st.write(lista)
+      
     modelo(lista,ovr)
 
   st.button("Reset", type="primary")
