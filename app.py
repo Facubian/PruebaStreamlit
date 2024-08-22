@@ -31,7 +31,7 @@ def primer_arbol():
   import pandas as pd
 
   def modelo(var,ovr):
-    st.write(type(var))
+    st.write(var)
     pred = ovr.predict(var)
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
@@ -114,7 +114,7 @@ def primer_arbol():
     
     df = pd.DataFrame([variables])
 
-    st.write(type(lista))
+    st.write(lista)
       
     modelo(lista,ovr)
 
