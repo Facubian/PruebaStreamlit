@@ -27,7 +27,7 @@ def primer_arbol():
   import streamlit as st
   import numpy as np
   import joblib
-  from scipy.stats import boxcox
+  #from scipy.stats import boxcox
   import pandas as pd
 
   def modelo(var,ovr):
