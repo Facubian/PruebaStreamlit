@@ -30,7 +30,7 @@ def primer_arbol():
   #from scipy.stats import boxcox
   import pandas as pd
   import sklearn
-  print(sklearn.__version__)
+  st.text(sklearn.__version__)
 
   def modelo(var,ovr):
     st.write(var)
