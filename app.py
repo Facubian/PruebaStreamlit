@@ -33,9 +33,7 @@ def primer_arbol():
   st.text(sklearn.__version__)
 
   def modelo(var,ovr):
-    df = pd.DataFrame([var])
-    #st.write(var)
-    pred = ovr.predict(df)
+    pred = ovr.predict(var)
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
     elif(pred==2):
@@ -81,8 +79,6 @@ def primer_arbol():
     dia_2 = col2.selectbox('Segundo diagnostico', ["Ninguno"])
     dia_2 = "Ninguno"
   
-
-  
   if st.button("Calcular"):
     
     lh_d = 0
@@ -112,14 +108,10 @@ def primer_arbol():
       "unidades": unidades,
       "dias_dis": dias_d,
       "lh_dis": lh_d}
-
-    lista=[edad,amh,rfa,dia1,dia2,unidades,dias_d,lh_d]
     
     df = pd.DataFrame([variables])
-
-    st.write(lista)
       
-    modelo(lista,ovr)
+    modelo(df,ovr)
 
   st.button("Reset", type="primary")
 
