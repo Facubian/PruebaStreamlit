@@ -27,10 +27,9 @@ def primer_arbol():
   import streamlit as st
   import numpy as np
   import joblib
-  from scipy.stats import boxcox
+  #from scipy.stats import boxcox
   import pandas as pd
   import sklearn
-  st.text(sklearn.__version__)
 
   def modelo(var,ovr):
     pred = ovr.predict(var)
@@ -80,7 +79,6 @@ def primer_arbol():
     dia_2 = "Ninguno"
   
   if st.button("Calcular"):
-    amh_B=boxcox(amh+1)
     
     lh_d = 0
     
@@ -103,7 +101,7 @@ def primer_arbol():
     
     variables={
       "edadboxcox": edad,
-      "amh_boxcox": amh_B,
+      "amh_boxcox": amh,
       "total rfa": rfa,
       "diagnostico 1": dia1,
       "diagnostico 2": dia2,
