@@ -63,7 +63,7 @@ def primer_arbol():
 
   col1, col2 = st.columns(2)
 
-  amh = col1.number_input('Hormona antimülereana', min_value=0)
+  amh = col1.number_input('Hormona antimülereana', min_value=0.0)
   rfa = col1.number_input('Recuento de foliculos antrales',min_value=0)
   fsh = col1.number_input('Unidades de fsh',min_value=0)
   
