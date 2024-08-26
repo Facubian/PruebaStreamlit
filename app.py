@@ -7,7 +7,6 @@ def intro():
 
     st.write("# Modelos de aprenidzaje para prediccion en embriologia 👋")
     st.sidebar.success("Seleccionar una demo")
-    st.sidebar.markdown("intro")
 
     st.markdown(
         """
