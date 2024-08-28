@@ -27,15 +27,20 @@ def primer_arbol():
   import streamlit as st
   import numpy as np
   import joblib
-  #from scipy.stats import boxcox
+  from scipy.stats import boxcox
   import pandas as pd
-  import sklearn
 
   def modelo(var,ovr):
     pred = ovr.predict(var)
-    return(pred)  
+    if(pred==1):
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
+    elif(pred==2):
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
+    else:
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
+  
 
-  ovr = joblib.load("modelo/mejor_modelo.pkl")
+  ovr = joblib.load("/content/modelo/modeloEntrenado.pkl")
 
   st.title('Arbol de desicion simple')
   st.markdown("""En esta página se puede probar un árbol de decisión 
@@ -52,32 +57,60 @@ def primer_arbol():
   **los dias de estimulacion** y 
   **dos posibles diagnósticos**""")
 
-  #diagnosticos=["Ninguno","Edt","Femenino Anatomico","Femenino Endocrino","Insuficiencia Ovarica","Masculino","Otro"]
+  diagnosticos=["Ninguno","Edt","Femenino Anatomico","Femenino Endocrino","Insuficiencia Ovarica","Masculino","Otro"]
 
+  col1, col2 = st.columns(2)
 
-  amh = st.number_input('Hormona antimülereana', min_value=0.0)
-  rfa = st.number_input('Recuento de foliculos antrales',min_value=0)
+  amh = col1.number_input('Hormona antimülereana', min_value=0)
+  rfa = col1.number_input('Recuento de foliculos antrales',min_value=0)
+  fsh = col1.number_input('Unidades de fsh',min_value=0)
   
-  edad = st.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
+  dia_1 = col1.selectbox('Primer diagnostico', diagnosticos)
+  
+  edad = col2.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
+  dias = col2.number_input('Cantidad de dias de estimulacion',min_value=0)
+  lh = col2.number_input('Unidades de lh suministradas',min_value=0)
+
+  if(dia_1 != "Ninguno"):
+    dia_2 = col2.selectbox('Segundo diagnostico', diagnosticos)
+  else:
+    dia_2 = col2.selectbox('Segundo diagnostico', ["Ninguno"])
+    dia_2 = "Ninguno"
+  
 
   
   if st.button("Calcular"):
     
-    variables={
-      "edad": edad,
-      "amh_boxcox": amh,
-      "total rfa": rfa}
+    lh_d = 0
     
-    df = pd.DataFrame([variables])
-      
-    pred = modelo(df,ovr)
-    if(pred==1):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
-    elif(pred==2):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
+    if(lh<1):
+      lh_d = 0
     else:
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
+      lh_d = 1
+    
+    dias_d = 0
+    if(dias<12):
+      dias_d=0
+    else:
+      dias_d=1
+    
+    dia1=diagnosticos.index(dia_1)+1
+    dia2=diagnosticos.index(dia_2)+1
 
+    unidades= fsh+lh
+    
+    variables={
+      "edadboxcox": edad,
+      "amh_boxcox": amh,
+      "total rfa": rfa,
+      "diagnostico 1": dia1,
+      "diagnostico 2": dia2,
+      "unidades": unidades,
+      "dias_dis": dias_d,
+      "lh_dis": lh_d}
+    
+    variables = pd.DataFrame([variables])
+    modelo(variables,ovr)
 
   st.button("Reset", type="primary")
 
