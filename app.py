@@ -35,7 +35,7 @@ def primer_arbol():
     pred = ovr.predict(var)
     return(pred)  
 
-  ovr = joblib.load("modelo/modeloEntrenado.pkl")
+  ovr = joblib.load("modelo/mejor_modelo.pkl")
 
   st.title('Arbol de desicion simple')
   st.markdown("""En esta página se puede probar un árbol de decisión 
@@ -94,14 +94,9 @@ def primer_arbol():
     unidades= fsh+lh
     
     variables={
-      "edadboxcox": edad,
+      "edad": edad,
       "amh_boxcox": amh,
-      "total rfa": rfa,
-      "diagnostico 1": dia1,
-      "diagnostico 2": dia2,
-      "unidades": unidades,
-      "dias_dis": dias_d,
-      "lh_dis": lh_d}
+      "total rfa": rfa
     
     df = pd.DataFrame([variables])
       
