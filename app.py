@@ -52,46 +52,16 @@ def primer_arbol():
   **los dias de estimulacion** y 
   **dos posibles diagnósticos**""")
 
-  diagnosticos=["Ninguno","Edt","Femenino Anatomico","Femenino Endocrino","Insuficiencia Ovarica","Masculino","Otro"]
+  #diagnosticos=["Ninguno","Edt","Femenino Anatomico","Femenino Endocrino","Insuficiencia Ovarica","Masculino","Otro"]
 
-  col1, col2 = st.columns(2)
 
-  amh = col1.number_input('Hormona antimülereana', min_value=0.0)
-  rfa = col1.number_input('Recuento de foliculos antrales',min_value=0)
-  fsh = col1.number_input('Unidades de fsh',min_value=0)
+  amh = st.number_input('Hormona antimülereana', min_value=0.0)
+  rfa = st.number_input('Recuento de foliculos antrales',min_value=0)
   
-  dia_1 = col1.selectbox('Primer diagnostico', diagnosticos)
-  
-  edad = col2.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
-  dias = col2.number_input('Cantidad de dias de estimulacion',min_value=0)
-  lh = col2.number_input('Unidades de lh suministradas',min_value=0)
+  edad = st.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
 
-  if(dia_1 != "Ninguno"):
-    dia_2 = col2.selectbox('Segundo diagnostico', diagnosticos)
-  else:
-    dia_2 = col2.selectbox('Segundo diagnostico', ["Ninguno"])
-    dia_2 = "Ninguno"
   
   if st.button("Calcular"):
-    
-    lh_d = 0
-    
-    if(lh<1):
-      lh_d = 0
-    else:
-      lh_d = 1
-    
-    dias_d = 0
-    
-    if(dias<12):
-      dias_d=0
-    else:
-      dias_d=1
-    
-    dia1=diagnosticos.index(dia_1)+1
-    dia2=diagnosticos.index(dia_2)+1
-
-    unidades= fsh+lh
     
     variables={
       "edad": edad,
