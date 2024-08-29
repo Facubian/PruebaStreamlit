@@ -96,9 +96,9 @@ def primer_arbol():
     unidades= fsh+lh
     
     variables={
-      "edad": edad,
-      "amh": amh,
-      "total rfa": rfa}
+      "edad": [edad,edad],
+      "amh": [amh,amh],
+      "total rfa": [rfa,rfa]}
     
     variables = pd.DataFrame([variables])
     st.write(variables)
