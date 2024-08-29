@@ -33,6 +33,7 @@ def primer_arbol():
 
   def modelo(var,ovr):
     st.write(var)
+    array(var)
     var.reshape(1, -1)
     pred = ovr.predict(var)
     return pred
