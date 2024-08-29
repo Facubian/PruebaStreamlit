@@ -100,7 +100,7 @@ def primer_arbol():
       "amh_boxcox": amh,
       "total rfa": rfa}
     
-    lis = [[edad,amh,rfa]]
+    lis = [edad,amh,rfa]
     variables = pd.DataFrame(lis)
     pred = modelo(variables,ovr)
       
