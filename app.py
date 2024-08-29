@@ -100,7 +100,7 @@ def primer_arbol():
       "amh": amh,
       "total rfa": rfa}
     
-    variables = pd.DataFrame(variables)
+    variables = pd.DataFrame([variables])
     st.write(variables)
     pred = modelo(variables,ovr)
       
