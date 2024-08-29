@@ -40,7 +40,7 @@ def primer_arbol():
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
   
 
-  ovr = joblib.load("/content/modelo/modeloEntrenado.pkl")
+  ovr = joblib.load("modelo/modeloEntrenado.pkl")
 
   st.title('Arbol de desicion simple')
   st.markdown("""En esta página se puede probar un árbol de decisión 
