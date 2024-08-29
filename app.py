@@ -1,5 +1,5 @@
 import streamlit as st
-from "SVMTree/SVMTree.py" import *
+from SVMTree/SVMTree.py import *
 
 @st.cache_resource
 
