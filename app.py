@@ -32,7 +32,6 @@ def primer_arbol():
   import pandas as pd
 
   def modelo(var,ovr):
-    var.reshape(1, -1)
     pred = ovr.predict(var)
     return pred
 
