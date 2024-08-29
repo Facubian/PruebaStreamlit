@@ -102,6 +102,7 @@ def primer_arbol():
     
     lis = [edad,amh,rfa]
     variables = pd.DataFrame([lis])
+    st.write(variables)
     pred = modelo(variables,ovr)
       
     if(pred==1):
