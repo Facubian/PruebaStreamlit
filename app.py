@@ -33,12 +33,7 @@ def primer_arbol():
 
   def modelo(var,ovr):
     pred = ovr.predict(var)
-    if(pred==1):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
-    elif(pred==2):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
-    else:
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
+    return pred
   
 
   ovr = joblib.load("modelo/mejor_modelo.pkl")
@@ -103,15 +98,16 @@ def primer_arbol():
     variables={
       "edadboxcox": edad,
       "amh_boxcox": amh,
-      "total rfa": rfa,
-      "diagnostico 1": dia1,
-      "diagnostico 2": dia2,
-      "unidades": unidades,
-      "dias_dis": dias_d,
-      "lh_dis": lh_d}
+      "total rfa": rfa}
     
     variables = pd.DataFrame([variables])
-    modelo(variables,ovr)
+    pred = modelo(variables,ovr)
+    if(pred==1):
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
+    elif(pred==2):
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
+    else:
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
 
   st.button("Reset", type="primary")
 
