@@ -67,8 +67,8 @@ def primer_arbol():
       "amh": amh,
       "total rfa": rfa}
     
-    variables = pd.DataFrame([[1,2,3],[edad,amh,rfa]])
-    print(variables)
+    variables = pd.DataFrame([variables])
+    print(edades,amh,rfa)
     
     pred = modelo(variables,ovr)
       
