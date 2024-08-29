@@ -32,12 +32,9 @@ def primer_arbol():
   import pandas as pd
 
   def modelo(var,ovr):
-    st.write(var)
-    array(var)
     var.reshape(1, -1)
     pred = ovr.predict(var)
     return pred
-  
 
   ovr = joblib.load("modelo/mejor_modelo.pkl")
 
@@ -58,45 +55,13 @@ def primer_arbol():
 
   diagnosticos=["Ninguno","Edt","Femenino Anatomico","Femenino Endocrino","Insuficiencia Ovarica","Masculino","Otro"]
 
-  col1, col2 = st.columns(2)
 
-  amh = col1.number_input('Hormona antimülereana', min_value=0)
-  rfa = col1.number_input('Recuento de foliculos antrales',min_value=0)
-  fsh = col1.number_input('Unidades de fsh',min_value=0)
+  amh = st.number_input('Hormona antimülereana', min_value=0.0)
+  rfa = st.number_input('Recuento de foliculos antrales',min_value=0)
   
-  dia_1 = col1.selectbox('Primer diagnostico', diagnosticos)
-  
-  edad = col2.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
-  dias = col2.number_input('Cantidad de dias de estimulacion',min_value=0)
-  lh = col2.number_input('Unidades de lh suministradas',min_value=0)
-
-  if(dia_1 != "Ninguno"):
-    dia_2 = col2.selectbox('Segundo diagnostico', diagnosticos)
-  else:
-    dia_2 = col2.selectbox('Segundo diagnostico', ["Ninguno"])
-    dia_2 = "Ninguno"
-  
-
+  edad = st.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
   
   if st.button("Calcular"):
-    
-    lh_d = 0
-    
-    if(lh<1):
-      lh_d = 0
-    else:
-      lh_d = 1
-    
-    dias_d = 0
-    if(dias<12):
-      dias_d=0
-    else:
-      dias_d=1
-    
-    dia1=diagnosticos.index(dia_1)+1
-    dia2=diagnosticos.index(dia_2)+1
-
-    unidades= fsh+lh
     
     variables={
       "edad": edad,
@@ -105,7 +70,7 @@ def primer_arbol():
     
     variables = pd.DataFrame([variables])
     
-    pred = modelo([edad,amh,rfa],ovr)
+    pred = modelo(variables,ovr)
       
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
