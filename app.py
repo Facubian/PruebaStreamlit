@@ -32,7 +32,7 @@ def primer_arbol():
   import pandas as pd
 
   def modelo(var,ovr):
-    pred = ovr.predict(var)
+    pred = ovr.predict(var.values)
     return pred
 
   ovr = joblib.load("modelo/mejor_modelo.pkl")
