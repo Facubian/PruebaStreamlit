@@ -100,7 +100,7 @@ def primer_arbol():
       "amh_boxcox": amh,
       "total rfa": rfa}
     
-    variables = pd.DataFrame([variables])
+    variables = pd.DataFrame(variables)
     pred = modelo(variables,ovr)
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
