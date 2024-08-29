@@ -102,7 +102,7 @@ def primer_arbol():
     
     lis = [[edad,amh,rfa]]
     variables = pd.DataFrame(lis)
-    pred = modelo(lis,ovr)
+    pred = modelo(variables,ovr)
       
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
