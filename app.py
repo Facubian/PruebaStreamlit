@@ -32,6 +32,7 @@ def primer_arbol():
   import pandas as pd
 
   def modelo(var,ovr):
+    st.write(var.values)
     pred = ovr.predict(var.values)
     return pred
 
