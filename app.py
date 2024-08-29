@@ -99,9 +99,9 @@ def primer_arbol():
       "edadboxcox": edad,
       "amh_boxcox": amh,
       "total rfa": rfa}
-    
+    lis = [edad,amh,rfa]
     variables = pd.DataFrame(variables)
-    pred = modelo(variables,ovr)
+    pred = modelo(lis,ovr)
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
     elif(pred==2):
