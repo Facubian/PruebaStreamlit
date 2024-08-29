@@ -32,6 +32,7 @@ def primer_arbol():
   import pandas as pd
 
   def modelo(var,ovr):
+    st.write(var)
     pred = ovr.predict(var)
     return pred
   
@@ -101,7 +102,7 @@ def primer_arbol():
       "total rfa": rfa}
     
     variables = pd.DataFrame([variables])
-    st.write(variables)
+    
     pred = modelo(variables,ovr)
       
     if(pred==1):
