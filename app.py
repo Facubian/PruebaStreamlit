@@ -101,7 +101,7 @@ def primer_arbol():
       "total rfa": rfa}
     
     lis = [edad,amh,rfa]
-    variables = pd.DataFrame(lis)
+    variables = pd.DataFrame([lis])
     pred = modelo(variables,ovr)
       
     if(pred==1):
