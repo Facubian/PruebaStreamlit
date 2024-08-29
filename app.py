@@ -32,8 +32,6 @@ def primer_arbol():
   import pandas as pd
 
   def modelo(var,ovr):
-    var.to_numpy
-    print(var)
     pred = ovr.predict(var)
     return pred
 
@@ -69,7 +67,7 @@ def primer_arbol():
       "amh": amh,
       "total rfa": rfa}
     
-    variables = pd.DataFrame([variables])
+    variables = pd.DataFrame([edad,amh,rfa])
     
     pred = modelo(variables,ovr)
       
