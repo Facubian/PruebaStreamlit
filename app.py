@@ -71,7 +71,7 @@ def primer_arbol():
     
     pred = modelo(variables,ovr)
 
-    pred = pred[0]
+    pred = int(pred[0])
     p = type(pred)
     st.write(p)
       
