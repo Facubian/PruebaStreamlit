@@ -32,13 +32,7 @@ def primer_arbol():
 
   def modelo(var,ovr):
     pred = ovr.predict(var)
-    if(pred==1):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
-    elif(pred==2):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
-    else:
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
-  
+    return pred
 
   ovr = joblib.load("modelo/modeloEntrenado.pkl")
 
@@ -110,7 +104,13 @@ def primer_arbol():
       "lh_dis": lh_d}
     
     variables = pd.DataFrame([variables])
-    modelo(variables,ovr)
+    pred = modelo(variables,ovr)
+    if(pred==1):
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
+    elif(pred==2):
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
+    else:
+      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
 
   st.button("Reset", type="primary")
 
