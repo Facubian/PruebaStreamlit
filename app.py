@@ -53,11 +53,11 @@ def primer_arbol():
 
   diagnosticos=["Ninguno","Edt","Femenino Anatomico","Femenino Endocrino","Insuficiencia Ovarica","Masculino","Otro"]
 
-  col1, col2 = st.columns(2)
+  #col1, col2 = st.columns(2)
 
-  amh = col1.number_input('Hormona antimülereana', min_value=0)
-  rfa = col1.number_input('Recuento de foliculos antrales',min_value=0)
-  edad = col2.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
+  amh = st.number_input('Hormona antimülereana', min_value=0)
+  rfa = st.number_input('Recuento de foliculos antrales',min_value=0)
+  edad = st.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
 
   
   #fsh = col1.number_input('Unidades de fsh',min_value=0)
