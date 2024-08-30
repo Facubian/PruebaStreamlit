@@ -57,6 +57,9 @@ def primer_arbol():
 
   amh = col1.number_input('Hormona antimülereana', min_value=0)
   rfa = col1.number_input('Recuento de foliculos antrales',min_value=0)
+  edad = col2.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
+
+  """
   fsh = col1.number_input('Unidades de fsh',min_value=0)
   
   dia_1 = col1.selectbox('Primer diagnostico', diagnosticos)
@@ -70,11 +73,11 @@ def primer_arbol():
   else:
     dia_2 = col2.selectbox('Segundo diagnostico', ["Ninguno"])
     dia_2 = "Ninguno"
-  
+  """
 
   
   if st.button("Calcular"):
-    
+    """
     lh_d = 0
     
     if(lh<1):
@@ -92,19 +95,20 @@ def primer_arbol():
     dia2=diagnosticos.index(dia_2)+1
 
     unidades= fsh+lh
-    
+    """
     variables={
       "edadboxcox": edad,
       "amh_boxcox": amh,
       "total rfa": rfa,
-      "diagnostico 1": dia1,
-      "diagnostico 2": dia2,
-      "unidades": unidades,
-      "dias_dis": dias_d,
-      "lh_dis": lh_d}
+      "diagnostico 1": 0,
+      "diagnostico 2": 0,
+      "unidades": 0,
+      "dias_dis": 0,
+      "lh_dis": 0}
     
     variables = pd.DataFrame([variables])
     pred = modelo(variables,ovr)
+    
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
     elif(pred==2):
