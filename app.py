@@ -55,7 +55,7 @@ def primer_arbol():
 
   #col1, col2 = st.columns(2)
 
-  amh = st.number_input('Hormona antimülereana', min_value=0)
+  amh = st.number_input('Hormona antimülereana', min_value=0.0)
   rfa = st.number_input('Recuento de foliculos antrales',min_value=0)
   edad = st.number_input('Edad del paciente', min_value=18, help="Tiene que ser mayor 18")
 
