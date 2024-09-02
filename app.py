@@ -29,6 +29,7 @@ def primer_arbol():
   import joblib
   from scipy.stats import boxcox
   import pandas as pd
+  from sklearn import SVM
 
   def modelo(var,ovr):
     pred = ovr.predict(var)
