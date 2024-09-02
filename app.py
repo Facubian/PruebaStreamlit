@@ -37,7 +37,7 @@ def primer_arbol():
 
   ovr = joblib.load("modelo/mejor_modelo.pkl")
 
-  st.title('Arbol de desicion simple')
+  st.title('SVM')
   st.markdown("""En esta página se puede probar un árbol de decisión 
     entrenado para predecir los óvulos que se recuperarán de una aspiración folicular 
     a partir de distintos datos clínicos del paciente""")
