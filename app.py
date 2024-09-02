@@ -1,5 +1,4 @@
 import streamlit as st
-from SVMTree import SVMTree
 
 @st.cache_resource
 
