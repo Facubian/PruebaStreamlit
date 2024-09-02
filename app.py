@@ -66,7 +66,7 @@ def primer_arbol():
       "amh_boxcox": int(amh),
       "total rfa": int(rfa)}
     
-    variables = pd.DataFrame([[edad, amh, rfa]])
+    variables = pd.DataFrame([variables])
     
     pred = modelo(variables,ovr)
 
