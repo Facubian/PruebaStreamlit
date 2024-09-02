@@ -66,8 +66,7 @@ def primer_arbol():
     variables={
       "edadboxcox": edad,
       "amh_boxcox": amh,
-      "total rfa": rfa,
-      "diag_n": 0}
+      "total rfa": rfa}
     
     variables = pd.DataFrame([variables])
     
