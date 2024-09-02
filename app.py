@@ -62,9 +62,9 @@ def primer_arbol():
   if st.button("Calcular"):
     
     variables={
-      "amh_boxcox": int(amh),
-      "edad_boxcox": int(edad),
-      "total rfa": int(rfa)}
+      "edadboxcox": edad,
+      "amh_boxcox": amh,
+      "total rfa": rfa,}
     
     variables = pd.DataFrame([variables])
     
