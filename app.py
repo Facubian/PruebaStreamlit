@@ -35,7 +35,7 @@ def primer_arbol():
     pred = ovr.predict(var)
     return pred
 
-  ovr = joblib.load("modelo/mejor_modelo.pkl")
+  ovr = joblib.load("modelo/mejor_modelo3.pkl")
 
   st.title('SVM')
   st.markdown("""En esta página se puede probar un árbol de decisión 
