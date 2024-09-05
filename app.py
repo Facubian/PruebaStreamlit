@@ -74,9 +74,9 @@ def primer_arbol():
 
     pred = int(pred)
       
-    if(pred==1):
+    if(pred=="1"):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
-    elif(pred==2):
+    elif(pred=="2"):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
     else:
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
