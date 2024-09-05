@@ -71,14 +71,16 @@ def primer_arbol():
     variables = pd.DataFrame([variables])
     
     pred = modelo(variables,ovr)
-
+    st.write(pred)
+    st.write(pred[0])
+      
     pred = int(pred[0])
       
     if(pred=="1"):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
     elif(pred=="2"):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
-    else:
+    elif (pred=="3"):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
 
   st.button("Reset", type="primary")
