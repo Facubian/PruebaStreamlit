@@ -53,7 +53,7 @@ def primer_arbol():
   **dos posibles diagnósticos**""")
 
   diagnosticos=["Ninguno","Edt","Femenino Anatomico","Femenino Endocrino","Insuficiencia Ovarica","Masculino","Otro"]
-
+ 
 
   amh = st.number_input('Hormona antimülereana', min_value=0.0)
   rfa = st.number_input('Recuento de foliculos antrales',min_value=0)
@@ -77,11 +77,11 @@ def primer_arbol():
     pred = int(pred[0])
       
     if(pred==1):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
+      st.markdown("Con un **67,5%** de probabilidad, se esperan obtener entre **0 y 4**")
     elif(pred==2):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **5 y 9**")
+      st.markdown("Con un **67,5%** de probabilidad, se esperan obtener entre **5 y 9**")
     elif (pred==3):
-      st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **mas de 10**")
+      st.markdown("Con un **67,5%** de probabilidad, se esperan obtener entre **mas de 10**")
 
   st.button("Reset", type="primary")
 
