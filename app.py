@@ -63,15 +63,15 @@ def primer_arbol():
   if st.button("Calcular"):
     
     variables={
-      "1": edad,
-      "2": amh,
-      "3": rfa}
+      "edad paciente": edad,
+      "amh": amh,
+      "total rfa": rfa}
     
     variables = pd.DataFrame([variables])
     
     pred = modelo(variables,ovr)
 
-    pred = int(pred[0])
+    pred = int(pred)
       
     if(pred==1):
       st.markdown("Con un **67%** de probabilidad, se esperan obtener entre **0 y 4**")
